@@ -1,5 +1,5 @@
 #include "UltrasonicSensor.h"
-UltrasonicSensor::UltrasonicSensor(int triggerPin, int echoPin)
+UltrasonicSensor::UltrasonicSensor(byte triggerPin, byte echoPin)
 {
   this->triggerPin = triggerPin;
   this->echoPin = echoPin;
@@ -15,11 +15,11 @@ long UltrasonicSensor::readDistance()
   pinMode(echoPin, INPUT);
   return pulseIn(echoPin, HIGH);
 }
-int UltrasonicSensor::getTheShortestDistance(int sampleSize)
+byte UltrasonicSensor::getTheShortestDistance(byte sampleSize)
 {
-  int cmMin = INT_MAX;
-  int cm = 0;
-  for (int i = 0; i < sampleSize; i++)
+  byte cmMin = INT_MAX;
+  byte cm = 0;
+  for (byte i = 0; i < sampleSize; i++)
   {
     cm = 0.01723 * readDistance();
     cmMin = min(cm, cmMin);

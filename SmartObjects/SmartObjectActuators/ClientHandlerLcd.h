@@ -5,8 +5,8 @@ using namespace std;
 class ClientHandlerLcd : public ClientHandler
 {
 public:
-    ClientHandlerLcd(String request);
-    void getResponseFromServer(Esp32 esp);
-    ~ClientHandlerLcd();
+  ClientHandlerLcd(String request);
+  void getResponseFromServer(Esp32 esp);
+  ~ClientHandlerLcd();
 };
 #endif

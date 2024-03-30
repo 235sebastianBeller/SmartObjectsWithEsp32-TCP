@@ -5,13 +5,13 @@
 class UltrasonicSensor
 {
 private:
-    int triggerPin;
-    int echoPin;
+    byte triggerPin;
+    byte echoPin;
 
 public:
-    UltrasonicSensor(int triggerPin, int echoPin);
+    UltrasonicSensor(byte triggerPin, byte echoPin);
     long readDistance();
-    int getTheShortestDistance(int sampleSize);
+    byte getTheShortestDistance(byte sampleSize);
     ~UltrasonicSensor();
 };
 

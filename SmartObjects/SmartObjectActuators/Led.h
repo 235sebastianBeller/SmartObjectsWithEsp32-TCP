@@ -4,16 +4,16 @@
 class Led
 {
 private:
-  int ledPin;
-  int previousMillis;
+  byte ledPin;
+  unsigned long previousMillis;
 
 public:
   Led();
-  Led(int ledPin);
+  Led(byte ledPin);
   void turnOff();
   void turnOn();
-  void setPreviosMillis(int millis);
-  int getPreviousMillis();
+  void setPreviosMillis(unsigned long millis);
+  unsigned long getPreviousMillis();
   ~Led();
 };
 #endif

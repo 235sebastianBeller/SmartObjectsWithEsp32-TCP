@@ -2,12 +2,12 @@
 #define CONSTANTS_H
 #define REQUEST_CLIENT_HANDLER_LEDS "GET id=1\n"
 #define REQUEST_CLIENT_HANDLER_LCD "GET id=2\n"
-#define WIFI_SSID "YOUR_SSID"
-#define WIFI_PASS "YOUR_PASS"
-#define SERVER_ADDRESS "SERVER_ADRESS"
+#define WIFI_SSID "FLIA-BELLER"
+#define WIFI_PASS "79769501."
+#define SERVER_ADDRESS "192.168.10.176"
 const int SERVER_PORT = 1000;
-const int LEDS_COUNT = 6;
+const byte LEDS_COUNT = 6;
 const int TRANSMISSION_SPEED = 115200;
-const int ledPins[LEDS_COUNT] = {15, 2, 4, 5, 18, 19};
-const int CLIENTS_ACTUATORS_COUNT = 2;
+const byte ledPins[LEDS_COUNT] = {13, 12, 14, 27, 33, 32};
+const byte CLIENTS_ACTUATORS_COUNT=2; 
 #endif

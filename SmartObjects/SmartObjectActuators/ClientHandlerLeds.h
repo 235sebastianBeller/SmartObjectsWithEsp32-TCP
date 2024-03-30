@@ -5,8 +5,8 @@ using namespace std;
 class ClientHandlerLeds : public ClientHandler
 {
 public:
-    ClientHandlerLeds(String request);
-    void getResponseFromServer(Esp32 esp);
-    ~ClientHandlerLeds();
+  ClientHandlerLeds(String request);
+  void getResponseFromServer(Esp32 esp);
+  ~ClientHandlerLeds();
 };
 #endif

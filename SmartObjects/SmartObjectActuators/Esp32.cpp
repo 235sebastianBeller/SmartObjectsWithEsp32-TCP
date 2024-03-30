@@ -10,7 +10,7 @@ void Esp32::intilizeLcd()
 }
 void Esp32::connectToInternet(const char *wifiSsid, const char *wifiPass)
 {
-  Serial.println("WiFi disconnect ");
+  Serial.println("WiFi disconnect ");\
   WiFi.disconnect(true);
   WiFi.hostname("Ultrasonico");
   WiFi.begin(wifiSsid, wifiPass);
@@ -29,22 +29,29 @@ void Esp32::parseList(string message, uint8_t data[8])
   istringstream ss(message);
   string token;
   int num;
-  for (int i = 0; i < 8; i++)
+  for (byte i = 1; i <=3*8; i++)
   {
     getline(ss, token, ',');
     ss >> num;
-    data[i] = num;
+    data[(i-1)%8] = num;
+    if (i%8==0)
+      lcd.createChar(i/8-1, data);
+  }
+
+}
+void Esp32::printStoredFigure(byte column, byte row){
+  for(byte i=0;i<3;i++){
+    lcd.setCursor(column+i, row);
+    lcd.write(i);
   }
 }
-void Esp32::printCharForLcd(String message, int column, int row, int id)
+void Esp32::printFigureForLcd(String message, byte column, byte row)
 {
   uint8_t data[8];
   parseList(message.c_str(), data);
-  lcd.createChar(id, data);
-  lcd.setCursor(column, row);
-  lcd.write(id);
+  printStoredFigure(column, row);
 }
-void Esp32::printMessageForLcd(String message, int column, int row)
+void Esp32::printMessageForLcd(String message, byte column, byte row)
 {
   lcd.clear();
   string firstPartOfMessage;
@@ -55,14 +62,14 @@ void Esp32::printMessageForLcd(String message, int column, int row)
 }
 void Esp32::initializeLeds()
 {
-  for (int i = 0; i < LEDS_COUNT; i++)
+  for (byte i = 0; i < LEDS_COUNT; i++)
     leds[i] = Led(ledPins[i]);
 }
-bool Esp32::isTime(int actualMillis, int previousMillis, int limitMillis)
+bool Esp32::isTime(unsigned long actualMillis, unsigned long previousMillis, unsigned long limitMillis)
 {
   return actualMillis - previousMillis >= limitMillis;
 }
-void Esp32::controlTheLed(int index, int limit)
+void Esp32::controlTheLed(byte index, byte limit)
 {
   if (index < limit)
   {
@@ -75,9 +82,9 @@ void Esp32::controlTheLed(int index, int limit)
 }
 void Esp32::turnOnTheLeds(int limit)
 {
-  for (int i = 0; i < LEDS_COUNT; i++)
+  for (byte i = 0; i < LEDS_COUNT; i++)
   {
-    int actualMillis = millis();
+    unsigned long actualMillis = millis();
     if (isTime(actualMillis, leds[i].getPreviousMillis(), 700))
     {
       leds[i].setPreviosMillis(actualMillis);

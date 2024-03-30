@@ -1,5 +1,5 @@
 #include "Led.h"
-Led::Led(int ledPin)
+Led::Led(byte ledPin)
 {
   this->ledPin = ledPin;
   previousMillis = 0;
@@ -16,11 +16,11 @@ void Led::turnOn()
 {
   digitalWrite(ledPin, HIGH);
 }
-int Led::getPreviousMillis()
+unsigned long Led::getPreviousMillis()
 {
   return previousMillis;
 }
-void Led::setPreviosMillis(int millis)
+void Led::setPreviosMillis(unsigned long millis)
 {
   previousMillis = millis;
 }
