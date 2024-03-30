@@ -29,13 +29,13 @@ void Esp32::parseList(string message, uint8_t data[8])
   istringstream ss(message);
   string token;
   int num;
-  for (byte i = 1; i <=3*8; i++)
+  for (byte i = 1; i <=COUNT_FIGURES*COLUMNS_FIGURE; i++)
   {
     getline(ss, token, ',');
     ss >> num;
-    data[(i-1)%8] = num;
-    if (i%8==0)
-      lcd.createChar(i/8-1, data);
+    data[(i-1)%COLUMNS_FIGURE] = num;
+    if (i%COLUMNS_FIGURE==0)
+      lcd.createChar(i/COLUMNS_FIGURE-1, data);
   }
 
 }

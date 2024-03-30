@@ -11,7 +11,7 @@ private:
 public:
     UltrasonicSensor(byte triggerPin, byte echoPin);
     long readDistance();
-    byte getTheShortestDistance(byte sampleSize);
+    int getTheShortestDistance(byte sampleSize);
     ~UltrasonicSensor();
 };
 

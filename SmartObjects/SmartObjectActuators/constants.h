@@ -9,5 +9,7 @@ const int SERVER_PORT = 1000;
 const byte LEDS_COUNT = 6;
 const int TRANSMISSION_SPEED = 115200;
 const byte ledPins[LEDS_COUNT] = {13, 12, 14, 27, 33, 32};
-const byte CLIENTS_ACTUATORS_COUNT=2; 
+const byte CLIENTS_ACTUATORS_COUNT=2;
+const byte COLUMNS_FIGURE=8;
+const byte COUNT_FIGURES=3; 
 #endif

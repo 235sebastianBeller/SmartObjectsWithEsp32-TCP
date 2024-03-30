@@ -15,10 +15,10 @@ long UltrasonicSensor::readDistance()
   pinMode(echoPin, INPUT);
   return pulseIn(echoPin, HIGH);
 }
-byte UltrasonicSensor::getTheShortestDistance(byte sampleSize)
+int UltrasonicSensor::getTheShortestDistance(byte sampleSize)
 {
-  byte cmMin = INT_MAX;
-  byte cm = 0;
+  int cmMin = INT_MAX;
+  int cm = 0;
   for (byte i = 0; i < sampleSize; i++)
   {
     cm = 0.01723 * readDistance();
