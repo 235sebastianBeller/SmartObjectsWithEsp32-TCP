@@ -3,7 +3,7 @@
 
 #include "constants.h"
 
-Esp32 esp(1);
+Esp32 esp;
 UltrasonicSensor ultrasonicSensor(TRIGGER_PIN, ECHO_PIN);
 
 void setup()
