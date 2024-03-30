@@ -19,8 +19,10 @@ public class ClientActuator extends Client {
     }
 
     public String getMessageBasedOnDistance(int distance) {
-        String[] messages = { "MUY CERCA,0,17,0,0,17,14,0,0", "LEJOS,0,17,0,0,31,0,0,0",
-                "MUY LEJOS,0,17,0,0,31,0,0,0" };
+        String[] messages = { "No me toques,28,2,7,6,0,0,0,0,0,0,0,0,14,17,31,0,7,8,28,12,0,0,0,0",
+         "Alejate mas,8,4,2,31,0,0,0,0,0,0,0,0,0,10,21,0,2,4,8,31,0,0,0,0", 
+         "Amo tu distancia,0,10,31,31,14,4,0,0,0,0,0,0,0,17,14,0,0,10,31,31,14,4,0,0" };
+      
         return messages[Math.min(distance / 14, 2)];
     }
 
