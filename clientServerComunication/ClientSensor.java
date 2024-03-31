@@ -9,11 +9,11 @@ public class ClientSensor extends Client {
     }
 
     public String getDistance(String inputLine) {
-        String distanciaStr = "0";
-        Pattern pattern = Pattern.compile("distance=(\\d+)");
+        String distanciaStr = ClientSensorConstants.DEFAULT_DISTANCE;
+        Pattern pattern = Pattern.compile(ClientSensorConstants.DISTANCE_PATTERN);
         Matcher matcher = pattern.matcher(inputLine);
         if (matcher.find()) {
-            distanciaStr = matcher.group(1);
+            distanciaStr = matcher.group(ClientSensorConstants.FIRST_GROUP);
         }
         return distanciaStr;
     }

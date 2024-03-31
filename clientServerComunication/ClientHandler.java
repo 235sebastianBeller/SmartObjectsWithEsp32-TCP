@@ -17,9 +17,9 @@ public class ClientHandler extends Thread {
 
     public void initilizeClients() {
         clients = new Client[] {
-                new ClientSensor(clientSocket, 0),
-                new ClientActuator(clientSocket, 1),
-                new ClientActuator(clientSocket, 2)
+                new ClientSensor(clientSocket, ClientSensorConstants.ID_CLIENT_CERO),
+                new ClientActuator(clientSocket, ClientActuatorConstants.ID_CLIENT_ONE),
+                new ClientActuator(clientSocket, ClientActuatorConstants.ID_CLIENT_TWO)
         };
     }
 
@@ -33,10 +33,10 @@ public class ClientHandler extends Thread {
 
     public int extractIdFromInput(String inputLine) {
         int id = 0;
-        Pattern pattern = Pattern.compile("id=(\\d+)");
+        Pattern pattern = Pattern.compile(ClientSensorConstants.PATTERN_ID);
         Matcher matcher = pattern.matcher(inputLine);
         if (matcher.find()) {
-            id = Integer.parseInt(matcher.group(1));
+            id = Integer.parseInt(matcher.group(ClientSensorConstants.FIRST_GROUP));
         }
         return id;
     }
